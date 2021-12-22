@@ -32,7 +32,7 @@ abstract class BaseActivity<M : Parcelable, E, F> : AppCompatActivity(), Connect
             .eventSource(eventSource)
     }
 
-    private val eventSource by lazy(NONE) {
+    val eventSource by lazy(NONE) {
         DeferredEventSource<E>()
     }
 
