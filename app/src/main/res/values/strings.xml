@@ -22,4 +22,6 @@
 
   <string name="image_picker_title">Image Picker</string>
   <string name="quiz_title">Quiz</string>
+  <string name="valid_email">Enter Valid Email</string>
+  <string name="valid_password">Enter Valid Password</string>
 </resources>
