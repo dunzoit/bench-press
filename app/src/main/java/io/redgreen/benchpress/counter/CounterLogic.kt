@@ -1,11 +1,13 @@
 package io.redgreen.benchpress.counter
 
-import com.spotify.mobius.Effects.effects
 import com.spotify.mobius.Next
 import com.spotify.mobius.Next.*
 import com.spotify.mobius.Update
 
 object CounterLogic : Update<ModelCounter, CounterEvent, CounterEffect> {
+
+    private const val COUNTER_LIMIT = 0
+
     override fun update(
         model: ModelCounter,
         event: CounterEvent
@@ -13,7 +15,7 @@ object CounterLogic : Update<ModelCounter, CounterEvent, CounterEffect> {
         return if (event is IncrementCounterEvent) {
             next(model.increment())
         } else if (event is DecrementCounterEvent) {
-            if (model.counter <= 0) {
+            if (model.counter <= COUNTER_LIMIT) {
                 dispatch(
                     setOf(ShowErrorEffect as CounterEffect)
                 )

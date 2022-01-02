@@ -2,15 +2,15 @@ package io.redgreen.benchpress.counter
 
 
 import com.spotify.mobius.rx2.RxMobius
-import io.reactivex.Observable
-import io.reactivex.ObservableSource
 import io.reactivex.ObservableTransformer
+import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 
 class CounterEffectHandler{
 
     fun createEffectHandler(
-        interact: Interactor
+        interact: CounterInteractor,
+        schedulers: Scheduler
     ) :ObservableTransformer<CounterEffect, CounterEvent> {
         
         return RxMobius.subtypeEffectHandler<CounterEffect, CounterEvent>()
@@ -19,7 +19,7 @@ class CounterEffectHandler{
                 {
                     interact.showError()
                 },
-                AndroidSchedulers.mainThread()
+                schedulers
             )
             .build()
         

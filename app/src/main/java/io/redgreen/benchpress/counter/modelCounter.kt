@@ -10,6 +10,8 @@ data class ModelCounter(
     companion object {
         val ZERO = ModelCounter(0)
     }
+    val count:String
+    get() = counter.toString()
 
     fun increment(): ModelCounter = copy(counter = counter + 1)
 

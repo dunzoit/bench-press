@@ -5,11 +5,12 @@ import android.content.Intent
 import android.widget.Toast
 import com.spotify.mobius.Next
 import io.reactivex.ObservableTransformer
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.redgreen.benchpress.R
 import io.redgreen.benchpress.architecture.BaseActivity
 import kotlinx.android.synthetic.main.counter_activity.*
 
-class CounterActivity : BaseActivity<ModelCounter, CounterEvent, CounterEffect>(), Interactor {
+class CounterActivity : BaseActivity<ModelCounter, CounterEvent, CounterEffect>(), CounterInteractor {
     companion object {
         fun start(context: Context) {
             context.startActivity(Intent(context, CounterActivity::class.java))
@@ -37,17 +38,18 @@ class CounterActivity : BaseActivity<ModelCounter, CounterEvent, CounterEffect>(
     }
 
     override fun render(model: ModelCounter) {
-        counterTextView.text = model.counter.toString()
+        counterTextView.text = model.count
     }
 
     override fun effectHandler(): ObservableTransformer<CounterEffect, CounterEvent> {
         return CounterEffectHandler().createEffectHandler(
-            interact = this@CounterActivity
+            interact = this@CounterActivity,
+            schedulers = AndroidSchedulers.mainThread()
         )
     }
 
     override fun showError() {
-        Toast.makeText(this, "hello error", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.lower_limit), Toast.LENGTH_SHORT).show()
     }
 }
 

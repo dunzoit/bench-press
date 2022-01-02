@@ -1,5 +1,5 @@
 package io.redgreen.benchpress.counter
 
-interface Interactor {
+interface CounterInteractor {
     fun showError()
 }
