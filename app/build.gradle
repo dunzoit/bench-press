@@ -3,36 +3,37 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-  compileSdkVersion 28
+    compileSdkVersion 28
 
-  defaultConfig {
-    applicationId "io.redgreen.benchpress"
-    minSdkVersion 16
-    targetSdkVersion 28
-    versionCode 1
-    versionName "1.0"
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-  }
-
-  buildTypes {
-    debug {
-      applicationIdSuffix ".debug"
+    defaultConfig {
+        applicationId "io.redgreen.benchpress"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
-  }
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+        }
 
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-  }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 androidExtensions {
-  experimental = true // Enabled for @Parcelize
+    experimental = true // Enabled for @Parcelize
 }
 
 dependencies {
