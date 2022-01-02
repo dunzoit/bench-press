@@ -22,5 +22,7 @@
 
   <string name="image_picker_title">Image Picker</string>
   <string name="quiz_title">Quiz</string>
-    <string name="lower_limit">CANNOT DECREMENT BELOW ZERO</string>
+  <string name="greet">Hello, Stranger</string>
+  <string name="lower_limit">CANNOT DECREMENT BELOW ZERO</string>
+  
 </resources>
